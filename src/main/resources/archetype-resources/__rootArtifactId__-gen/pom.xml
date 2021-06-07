@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>cloud.unionj</groupId>
-            <artifactId>unionj-generator-backend</artifactId>
+            <artifactId>unionj-generator-openapi</artifactId>
             <version>${unionj-generator.version}</version>
         </dependency>
     </dependencies>
