@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}</artifactId>
+        <version>${version}</version>
+    </parent>
+    <artifactId>${artifactId}</artifactId>
+
+    <properties>
+        <unionj-generator.version>1.6-SNAPSHOT</unionj-generator.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cloud.unionj</groupId>
+            <artifactId>unionj-generator-backend</artifactId>
+            <version>${unionj-generator.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>cloud.unionj</groupId>
+                <artifactId>unionj-generator-maven-plugin</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>codegen</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <entry>${package}.gen.Openapi3Designer.design</entry>
+                    <protoPkg>${package}.proto</protoPkg>
+                    <protoDir>${project.parent.basedir}/${rootArtifactId}-proto</protoDir>
+                    <voPkg>${package}.vo</voPkg>
+                    <voDir>${project.parent.basedir}/${rootArtifactId}-vo</voDir>
+                    <parentGroupId>${groupId}</parentGroupId>
+                    <parentArtifactId>${rootArtifactId}</parentArtifactId>
+                    <parentVersion>${version}</parentVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
